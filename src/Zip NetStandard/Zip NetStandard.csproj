@@ -22,6 +22,7 @@
 	  <AssemblyOriginatorKeyFile>..\Ionic.snk</AssemblyOriginatorKeyFile>
 	  <DelaySign>false</DelaySign>
       <Version>1.16.1</Version>
+      <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
     </PropertyGroup>
 
     <ItemGroup>
@@ -45,6 +46,10 @@
       <PackageReference Include="System.Security.Permissions" Version="4.7.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
       <PackageReference Include="System.Security.Permissions" Version="8.0.0" Condition="'$(TargetFramework)' == 'net8.0'" />
       <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+    </ItemGroup>
+
+    <ItemGroup>
+		<None Include="LICENSE.txt" Pack="true" PackagePath="" />
     </ItemGroup>
 
     <Import Project="..\Zlib.Shared\Zlib.Shared.projitems" Label="Shared" />
