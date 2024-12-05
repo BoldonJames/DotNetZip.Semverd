@@ -1,12 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
+        <TargetFrameworks>netstandard2.0;net8.0;net471</TargetFrameworks>
         <AssemblyName>DotNetZip</AssemblyName>
-        <Id>DotNetZip</Id>
+        <Id>BoldonJames.DotNetZip</Id>
         <RootNamespace>Ionic.Zip</RootNamespace>
         <OutputType>Library</OutputType>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageId>BoldonJames.DotNetZip</PackageId>
+		<Version>1.16.1</Version>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -15,9 +17,10 @@
 
     <PropertyGroup>
       <DefineConstants>AESCRYPTO;BZIP</DefineConstants>
-      <SignAssembly>true</SignAssembly>
-      <AssemblyOriginatorKeyFile>..\Ionic.snk</AssemblyOriginatorKeyFile>
-      <DelaySign>false</DelaySign>
+      <PackageId>BoldonJames.DotNetZip</PackageId>
+	  <SignAssembly>true</SignAssembly>
+	  <AssemblyOriginatorKeyFile>..\Ionic.snk</AssemblyOriginatorKeyFile>
+	  <DelaySign>false</DelaySign>
     </PropertyGroup>
 
     <ItemGroup>
@@ -37,10 +40,14 @@
       <Compile Include="..\SolutionInfo.cs" Link="SolutionInfo.cs" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="System.Security.Permissions" Version="4.7.0" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+      <PackageReference Include="System.Security.Permissions" Version="8.0.0" Condition="'$(TargetFramework)' == 'net8.0'" />
+      <PackageReference Include="System.Text.Encoding.CodePages" Version="4.7.1" Condition="'$(TargetFramework)' == 'netstandard2.0'" />
+    </ItemGroup>
+
     <Import Project="..\Zlib.Shared\Zlib.Shared.projitems" Label="Shared" />
 
     <Import Project="..\Zip.Shared\Zip.Shared.projitems" Label="Shared" />
-
-    <Import Project="..\..\.paket\Paket.Restore.targets" />
 
 </Project>
